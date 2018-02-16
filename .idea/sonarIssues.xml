@@ -3,7 +3,82 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../W.UP/Dev/Product/MobileUp1.x/authentication/src/main/java/hu/wup/mobile/android/function/authentication/repository/AuthenticationRepositoryImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../W.UP/Dev/Product/MobileUp1.x/authentication/src/main/java/hu/wup/mobile/android/function/authentication/ui/screens/login/LoginActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../W.UP/Dev/Product/MobileUp1.x/common-api/src/main/java/hu/wup/mobile/android/commonapi/repository/AppPreloadRepositoryImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../W.UP/Dev/Product/MobileUp1.x/mobilebank/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../W.UP/Dev/Product/MobileUp1.x/mobilebank/src/debug/java/hu/wup/mobile/android/mobilebank/DebugMobilebankApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../W.UP/Dev/Product/MobileUp1.x/mobilebank/src/main/java/hu/wup/mobile/android/mobilebank/MobilebankApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../W.UP/Dev/Product/MobileUp1.x/mobilebank/src/main/java/hu/wup/mobile/android/mobilebank/module/modules/MobilebankModule.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../W.UP/Dev/Product/MobileUp1.x/mobilebank/src/main/java/hu/wup/mobile/android/mobilebank/network/CommonOkHttpClientBuilderProvider.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/app.iml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/digital/wup/superhero/BuildConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/App.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/MainActivity.java">
           <value>
             <set />
           </value>
@@ -53,6 +128,36 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/model/CharacterDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/model/CharacterDataBase.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/model/CharacterDataContainer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/model/CharacterDataWrapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/model/CharactersResponse.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/model/CharactersRespose.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/model/Error.java">
           <value>
             <set />
@@ -64,6 +169,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/model/Page.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/network/CharacterService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/network/NetworkInterceptor.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/network/NetworkUtil.java">
           <value>
             <set />
           </value>

@@ -2,6 +2,7 @@ package digital.wup.superhero.data.model;
 
 
 public class Error {
+    public static final String EMPTY = "E001";
     private String code;
     private String message;
 
