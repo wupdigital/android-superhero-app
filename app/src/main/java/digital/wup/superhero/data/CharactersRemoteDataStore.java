@@ -1,11 +1,9 @@
 package digital.wup.superhero.data;
 
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import digital.wup.superhero.data.model.Character;
-import digital.wup.superhero.data.model.CharacterDataContainer;
 import digital.wup.superhero.data.model.CharacterDataWrapper;
 import digital.wup.superhero.data.model.Error;
 import digital.wup.superhero.data.model.Page;

@@ -1,5 +1,6 @@
-package digital.wup.superhero.presentation;
+package digital.wup.superhero.presentation.ui.characters;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,9 +11,10 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjection;
 import digital.wup.superhero.R;
 import digital.wup.superhero.data.model.Character;
-import digital.wup.superhero.presentation.CharactersContract;
+import digital.wup.superhero.presentation.Navigation;
+import digital.wup.superhero.presentation.ui.details.DetailsActivity;
 
-public class SuperheroActivity extends AppCompatActivity implements CharactersContract.CharactersView {
+public class CharactersActivity extends AppCompatActivity implements CharactersContract.CharactersView {
 
     @Inject
     CharactersContract.CharactersPresenter presenter;
@@ -54,7 +56,7 @@ public class SuperheroActivity extends AppCompatActivity implements CharactersCo
 
     @Override
     public void showCharacters(Character[] characters) {
-        recyclerView.setAdapter(new CharacterAdapter(characters));
+        recyclerView.setAdapter(new CharacterAdapter(characters, this));
     }
 
     @Override
@@ -65,5 +67,12 @@ public class SuperheroActivity extends AppCompatActivity implements CharactersCo
     @Override
     public void showNoCharacters() {
 
+    }
+
+    @Override
+    public void navigateToDetails(Bundle bundle) {
+        Intent navigate = new Intent(this, DetailsActivity.class);
+        navigate.putExtra(Navigation.EXTRA, bundle);
+        startActivity(navigate);
     }
 }

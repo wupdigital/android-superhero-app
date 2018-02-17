@@ -1,4 +1,4 @@
-package digital.wup.superhero.presentation;
+package digital.wup.superhero.presentation.ui.characters;
 
 
 import digital.wup.superhero.data.model.Character;

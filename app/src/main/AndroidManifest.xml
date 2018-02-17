@@ -3,6 +3,7 @@
     package="digital.wup.superhero">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".SuperheroApp"
         android:allowBackup="true"
@@ -11,13 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.SuperheroActivity">
+        <activity android:name=".presentation.ui.characters.CharactersActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.ui.details.DetailsActivity"></activity>
     </application>
 
 </manifest>

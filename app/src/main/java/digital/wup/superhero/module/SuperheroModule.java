@@ -10,13 +10,15 @@ import digital.wup.superhero.data.CharactersDataStore;
 import digital.wup.superhero.data.CharactersLocalDataSource;
 import digital.wup.superhero.data.CharactersRemoteDataStore;
 import digital.wup.superhero.data.CharactersRepository;
-import digital.wup.superhero.domain.UseCase;
 import digital.wup.superhero.domain.UseCaseHandler;
 import digital.wup.superhero.domain.UseCaseScheduler;
 import digital.wup.superhero.domain.UseCaseThreadPoolScheduler;
+import digital.wup.superhero.domain.usecase.GetCharacterUseCase;
 import digital.wup.superhero.domain.usecase.GetCharactersUseCase;
-import digital.wup.superhero.presentation.CharacatersPresenterImpl;
-import digital.wup.superhero.presentation.CharactersContract;
+import digital.wup.superhero.presentation.ui.characters.CharacatersPresenterImpl;
+import digital.wup.superhero.presentation.ui.characters.CharactersContract;
+import digital.wup.superhero.presentation.ui.details.DetailsContract;
+import digital.wup.superhero.presentation.ui.details.DetailsPresenterImpl;
 
 @Module
 public class SuperheroModule {
@@ -73,5 +75,17 @@ public class SuperheroModule {
     @Provides
     public CharactersContract.CharactersPresenter provideCharactersPresenter(GetCharactersUseCase useCase, UseCaseHandler useCaseHandler) {
         return new CharacatersPresenterImpl(useCase, useCaseHandler);
+    }
+
+    @Singleton
+    @Provides
+    public GetCharacterUseCase provideGetCharacterUseCase(CharactersDataStore dataStore) {
+        return new GetCharacterUseCase(dataStore);
+    }
+
+    @Singleton
+    @Provides
+    public DetailsContract.DetailsPresenter provideDetailsPresenter(GetCharacterUseCase useCase, UseCaseHandler useCaseHandler) {
+        return new DetailsPresenterImpl(useCase, useCaseHandler);
     }
 }

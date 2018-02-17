@@ -1,7 +1,11 @@
-package digital.wup.superhero.presentation;
+package digital.wup.superhero.presentation.ui.characters;
 
+
+import android.os.Bundle;
 
 import digital.wup.superhero.data.model.Character;
+import digital.wup.superhero.presentation.Presenter;
+import digital.wup.superhero.presentation.View;
 
 public interface CharactersContract {
     interface CharactersPresenter extends Presenter {
@@ -30,5 +34,7 @@ public interface CharactersContract {
         void showLoadingCharactersError(String message);
 
         void showNoCharacters();
+
+        void navigateToDetails(Bundle bundle);
     }
 }
