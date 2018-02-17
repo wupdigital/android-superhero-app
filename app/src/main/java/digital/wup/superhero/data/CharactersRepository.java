@@ -26,9 +26,18 @@ public class CharactersRepository implements CharactersDataStore {
             public void onError(Error error) {
                 remoteDataStore.loadCharacters(page, new LoadCharactersCallback() {
                     @Override
-                    public void onSuccess(Character[] characters) {
-                        localDataSource.saveCharacters(characters, null);
-                        callback.onSuccess(characters);
+                    public void onSuccess(final Character[] characters) {
+                        localDataSource.saveCharacters(characters, new SaveCharactersCallback() {
+                            @Override
+                            public void onSuccess() {
+                                callback.onSuccess(characters);
+                            }
+
+                            @Override
+                            public void onError(Error error) {
+                                callback.onError(error);
+                            }
+                        });
                     }
 
                     @Override

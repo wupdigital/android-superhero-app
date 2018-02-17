@@ -1,6 +1,9 @@
 package digital.wup.superhero.data;
 
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import digital.wup.superhero.data.model.Character;
 import digital.wup.superhero.data.model.CharacterDataContainer;
 import digital.wup.superhero.data.model.CharacterDataWrapper;
@@ -33,6 +36,7 @@ public class CharactersRemoteDataStore implements CharactersDataStore {
                 .baseUrl("https://gateway.marvel.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
+                .callbackExecutor(Executors.newSingleThreadExecutor())
                 .build();
 
         service = retrofit.create(CharacterService.class);
@@ -40,7 +44,7 @@ public class CharactersRemoteDataStore implements CharactersDataStore {
 
     @Override
     public void loadCharacters(Page page, final LoadCharactersCallback callback) {
-        service.loadCharacters().enqueue(new Callback<CharacterDataWrapper>() {
+        service.loadCharacters(page.getLimit(), page.getOffset()).enqueue(new Callback<CharacterDataWrapper>() {
             @Override
             public void onResponse(Call<CharacterDataWrapper> call, Response<CharacterDataWrapper> response) {
                 if (response.body() != null)
@@ -58,8 +62,21 @@ public class CharactersRemoteDataStore implements CharactersDataStore {
     }
 
     @Override
-    public void loadCharacter(String id, LoadCharactersCallback callback) {
+    public void loadCharacter(String id, final LoadCharactersCallback callback) {
+        service.loadCharacter(id).enqueue(new Callback<CharacterDataWrapper>() {
+            @Override
+            public void onResponse(Call<CharacterDataWrapper> call, Response<CharacterDataWrapper> response) {
+                if (response.body() != null)
+                    callback.onSuccess(response.body().getData().getResults());
+                else
+                    callback.onError(new Error(Error.EMPTY, "response body empty"));
+            }
 
+            @Override
+            public void onFailure(Call<CharacterDataWrapper> call, Throwable t) {
+                callback.onError(new Error());
+            }
+        });
     }
 
     @Override
