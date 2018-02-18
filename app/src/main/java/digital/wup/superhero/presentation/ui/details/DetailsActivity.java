@@ -57,9 +57,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     public void showCharacter(Character characters) {
         nameTextView.setText(characters.getName());
 
-        ThumbnailDecorator decorator = new ThumbnailDecorator(characters.getThumbnail());
-
-        picasso.load(decorator.getPath() + decorator.getExtension()).into(thumbnailImageView);
+        picasso.load(characters.getThumbnail().getPath() + "." + characters.getThumbnail().getExtension()).into(thumbnailImageView);
     }
 
     @Override

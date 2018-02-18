@@ -1,16 +1,10 @@
 package digital.wup.superhero.domain;
 
 
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
-import android.renderscript.RenderScript;
-import android.support.annotation.NonNull;
-import android.support.annotation.WorkerThread;
 
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
