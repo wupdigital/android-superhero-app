@@ -24,19 +24,19 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        TextView view = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.character_item, null);
+        TextView view = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.character_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.textView.setText(charactersDataSet[position].getName());
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        holder.textView.setText(charactersDataSet[holder.getAdapterPosition()].getName());
         holder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString(Navigation.CHARACTER_ID, String.valueOf(charactersDataSet[position].getId()));
+                bundle.putString(Navigation.CHARACTER_ID, String.valueOf(charactersDataSet[holder.getAdapterPosition()].getId()));
 
                 charactersView.navigateToDetails(bundle);
             }
