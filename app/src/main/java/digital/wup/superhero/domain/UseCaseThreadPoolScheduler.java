@@ -3,6 +3,7 @@ package digital.wup.superhero.domain;
 
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.os.Looper;
 import android.renderscript.RenderScript;
 import android.support.annotation.NonNull;
 import android.support.annotation.WorkerThread;
@@ -17,7 +18,7 @@ import digital.wup.superhero.data.model.Error;
 
 public class UseCaseThreadPoolScheduler implements UseCaseScheduler {
 
-    private final Handler mHandler = new Handler();
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
 
     public static final int POOL_SIZE = 2;
 

@@ -2,6 +2,10 @@ package digital.wup.superhero.module;
 
 import android.content.Context;
 
+import com.jakewharton.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
+
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -10,6 +14,7 @@ import digital.wup.superhero.data.CharactersDataStore;
 import digital.wup.superhero.data.CharactersLocalDataSource;
 import digital.wup.superhero.data.CharactersRemoteDataStore;
 import digital.wup.superhero.data.CharactersRepository;
+import digital.wup.superhero.data.network.NetworkInterceptor;
 import digital.wup.superhero.domain.UseCaseHandler;
 import digital.wup.superhero.domain.UseCaseScheduler;
 import digital.wup.superhero.domain.UseCaseThreadPoolScheduler;
@@ -19,6 +24,8 @@ import digital.wup.superhero.presentation.ui.characters.CharacatersPresenterImpl
 import digital.wup.superhero.presentation.ui.characters.CharactersContract;
 import digital.wup.superhero.presentation.ui.details.DetailsContract;
 import digital.wup.superhero.presentation.ui.details.DetailsPresenterImpl;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 @Module
 public class SuperheroModule {
@@ -43,8 +50,8 @@ public class SuperheroModule {
 
     @Singleton
     @Provides
-    public CharactersRemoteDataStore providCharactersRemoteDataStore() {
-        return new CharactersRemoteDataStore();
+    public CharactersRemoteDataStore providCharactersRemoteDataStore(OkHttpClient okHttpClient) {
+        return new CharactersRemoteDataStore(okHttpClient);
     }
 
     @Singleton
@@ -87,5 +94,28 @@ public class SuperheroModule {
     @Provides
     public DetailsContract.DetailsPresenter provideDetailsPresenter(GetCharacterUseCase useCase, UseCaseHandler useCaseHandler) {
         return new DetailsPresenterImpl(useCase, useCaseHandler);
+    }
+
+    @Singleton
+    @Provides
+    public OkHttpClient provideOkHttpClient(HttpLoggingInterceptor interceptor) {
+        return new OkHttpClient.Builder()
+                .addInterceptor(new NetworkInterceptor())
+                .addInterceptor(interceptor)
+                .build();
+    }
+
+    @Singleton
+    @Provides
+    public HttpLoggingInterceptor provideHttpLoggingInterceptor() {
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        return loggingInterceptor;
+    }
+
+    @Singleton
+    @Provides
+    public Picasso providePicasso(Context context, OkHttpClient client) {
+        return new Picasso.Builder(context).downloader(new OkHttp3Downloader(client)).build();
     }
 }

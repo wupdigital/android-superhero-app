@@ -208,6 +208,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/data/network/PicassoNetworkInterceptor.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/domain/Request.java">
           <value>
             <set />
@@ -444,6 +449,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/presentation/ui/details/DetailsPresenterImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/digital/wup/superhero/presentation/ui/details/ThumbnailDecorator.java">
           <value>
             <set />
           </value>

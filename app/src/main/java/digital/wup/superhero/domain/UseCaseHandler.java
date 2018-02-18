@@ -9,9 +9,19 @@ public class UseCaseHandler {
         this.useCaseScheduler = useCaseScheduler;
     }
 
-    public <Rq extends Request, Rs extends Response> void execute(final UseCase<Rq, Rs> useCase, Rq request, UseCaseCallback<Rs> callback) {
+    public <Rq extends Request, Rs extends Response> void execute(final UseCase<Rq, Rs> useCase, Rq request, final UseCaseCallback<Rs> callback) {
         useCase.setRequest(request);
-        useCase.setUseCaseCallback(callback);
+        useCase.setUseCaseCallback(new UseCaseCallback<Rs>() {
+            @Override
+            public void onSuccess(Rs response) {
+                notifyResponse(response, callback);
+            }
+
+            @Override
+            public void onError(Error error) {
+                notifyError(error, callback);
+            }
+        });
         useCaseScheduler.execute(new Runnable() {
             @Override
             public void run() {

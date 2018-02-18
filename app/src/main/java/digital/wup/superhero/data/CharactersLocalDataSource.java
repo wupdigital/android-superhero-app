@@ -41,9 +41,13 @@ public class CharactersLocalDataSource implements CharactersDataStore {
     @Override
     public void saveCharacters(final Character[] characters, final SaveCharactersCallback callback) {
         Timber.d("CharactersLocalDataSource - saveCharacters");
-        Long[] success = dataBase.characterDao().saveCharacters(characters);
-        if (success != null && success.length > 0) callback.onSuccess();
-        else callback.onError(new Error(Error.EMPTY, "Saving characters has failed"));
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                Long[] success = dataBase.characterDao().saveCharacters(characters);
+                if (success != null && success.length > 0) callback.onSuccess();
+                else callback.onError(new Error(Error.EMPTY, "Saving characters has failed"));
+            }
+        });
     }
-
 }

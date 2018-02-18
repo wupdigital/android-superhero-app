@@ -7,7 +7,6 @@ import android.app.Application;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
-import dagger.android.DaggerApplication;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import digital.wup.superhero.module.DaggerSuperheroComponent;

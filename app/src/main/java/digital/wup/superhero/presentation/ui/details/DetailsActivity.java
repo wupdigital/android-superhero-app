@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
@@ -14,11 +15,14 @@ import dagger.android.AndroidInjection;
 import digital.wup.superhero.R;
 import digital.wup.superhero.data.model.Character;
 import digital.wup.superhero.presentation.Navigation;
+import timber.log.Timber;
 
 public class DetailsActivity extends AppCompatActivity implements DetailsContract.DetailsView {
 
     @Inject
     DetailsContract.DetailsPresenter presenter;
+    @Inject
+    Picasso picasso;
 
     private TextView nameTextView;
     private ImageView thumbnailImageView;
@@ -53,7 +57,9 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     public void showCharacter(Character characters) {
         nameTextView.setText(characters.getName());
 
-        Picasso.with(this).load(characters.getThumbnail().getPath()).into(thumbnailImageView);
+        ThumbnailDecorator decorator = new ThumbnailDecorator(characters.getThumbnail());
+
+        picasso.load(decorator.getPath() + decorator.getExtension()).into(thumbnailImageView);
     }
 
     @Override
